@@ -3,14 +3,12 @@
     "version": "1.0.0",
     "vendor": "CeeBuzz",
     "type": "web",
-    "main": "index.html",
+    "main": "https://cee.buzz/home",
     "title": "CeeBuzz TV",
     "icon": "icon.png",
     "largeIcon": "icon.png",
     "bgColor": "#000000",
     "resolution": "1920x1080",
-    "permissions": [
-        "internet"
-    ],
+    "permissions": ["internet"],
     "trustLevel": "trusted"
 }
