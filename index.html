@@ -1,62 +1,13 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CeeBuzz TV Edition</title>
-    <style>
-        body { 
-            margin: 0; 
-            background-color: #000; 
-            color: #fff; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
-        }
-        .loader-container { text-align: center; }
-        .spinner {
-            width: 50px; height: 50px;
-            border: 5px solid #333;
-            border-top: 5px solid #e50914; /* لون أحمر سينمائي */
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
-</head>
-<body>
-
-    <div class="loader-container">
-        <div class="spinner"></div>
-        <h2>جاري تحضير السينما...</h2>
-    </div>
-
+    <title>CeeBuzz TV</title>
     <script type="text/javascript">
-        // 1. وظيفة التحكم في أزرار الريموت
-        document.addEventListener('keydown', function(e) {
-            // كود زر العودة (Back) في شاشات LG هو 461
-            if (e.keyCode === 461 || e.key === 'Backspace') {
-                e.preventDefault();
-                // إذا كان هناك تاريخ للتصفح، ارجع للخلف، وإلا اغلق التطبيق
-                if (window.history.length > 1) {
-                    window.history.back();
-                } else {
-                    window.close();
-                }
-            }
-        });
-
-        // 2. وظيفة التوجيه للموقع
-        window.onload = function() {
-            // ننتظر قليلاً ليتمكن النظام من تحميل مكتبات الـ WebOS الأساسية
-            setTimeout(function() {
-                window.location.href = "https://cee.buzz/landing";
-            }, 1500);
-        };
+        // هذا الكود يضمن التحويل للموقع الخارجي وتجاوز قيود webOS
+        window.location.replace("https://cee.buzz/home");
     </script>
+</head>
+<body style="background-color: #000;">
 </body>
 </html>
