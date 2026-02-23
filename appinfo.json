@@ -6,7 +6,7 @@
     "main": "index.html",
     "title": "CeeBuzz TV",
     "icon": "icon.png",
-    "largeIcon": "largeIcon.png",
+    "largeIcon": "icon.png",
     "bgColor": "#000000",
     "resolution": "1920x1080",
     "permissions": ["internet"]
