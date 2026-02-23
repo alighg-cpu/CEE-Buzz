@@ -3,7 +3,7 @@ name: Build webOS IPK
 on:
   push:
     branches:
-      - main  # سيتم البناء تلقائياً عند أي رفع لملفاتك على فرع main
+      - main
 
 jobs:
   build:
@@ -11,21 +11,23 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  # تم التحديث إلى v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4 # تم التحديث إلى v4
         with:
-          node-version: '16'
+          node-version: '20' # استخدام نسخة Node حديثة ومستقرة
 
-      - name: Install Official webOS CLI
+      - name: Install webOS CLI
         run: npm install -g @webos-tools/cli
 
       - name: Package App
-        run: ares-package . -o ./build
+        run: |
+          mkdir -p build
+          ares-package . -o ./build
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 # تم التحديث إلى v4 لحل مشكلة الصورة الثانية
         with:
           name: webos-package
-          path: ./build/*.ipk
+          path: build/*.ipk
