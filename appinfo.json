@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "vendor": "CeeBuzz",
     "type": "web",
-    "main": "https://cee.buzz/home",
+    "main": "index.html",
     "title": "CeeBuzz TV",
     "icon": "icon.png",
     "largeIcon": "icon.png",
