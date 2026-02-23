@@ -1,10 +1,10 @@
-name: Build webOS IPK (Final Edition)
+name: Build webOS IPK
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch: # يتيح لك تشغيل البناء يدوياً إذا أردت
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,25 +19,17 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Official webOS CLI
+      - name: Install webOS CLI
         run: npm install -g @webos-tools/cli
 
-      - name: Prepare and Package App
+      - name: Package App
         run: |
-          # التأكد من وجود مجلد البناء
           mkdir -p build
-          
-          # عرض قائمة الملفات للتأكد من وجود appinfo.json قبل البدء
-          echo "Current directory files:"
-          ls -F
-          
-          # تنفيذ أمر بناء الحزمة
-          # استخدمنا --no-minify لضمان استقرار الروابط الخارجية في ملف التعريف
+          # استخدام النقطة (.) لضغط المجلد الحالي بالكامل
           ares-package . -o ./build --no-minify
 
-      - name: Upload IPK Artifact
+      - name: Upload IPK
         uses: actions/upload-artifact@v4
         with:
           name: webos-package-final
           path: build/*.ipk
-          if-no-files-found: error
