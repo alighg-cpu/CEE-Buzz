@@ -1,9 +1,10 @@
-name: Build webOS IPK
+name: Build webOS IPK (Final Edition)
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch: # يتيح لك تشغيل البناء يدوياً إذا أردت
 
 jobs:
   build:
@@ -18,25 +19,25 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install webOS CLI
+      - name: Install Official webOS CLI
         run: npm install -g @webos-tools/cli
 
-      - name: Fix Directory and Build
+      - name: Prepare and Package App
         run: |
-          # هذا الأمر سيتأكد من مكان ملف appinfo.json
-          FILE=appinfo.json
-          if [ -f "$FILE" ]; then
-             echo "الملف موجود، جاري البدء بالبناء..."
-             mkdir -p build
-             ares-package . -o ./build
-          else
-             echo "خطأ: ملف appinfo.json غير موجود في المجلد الرئيسي!"
-             ls -R # سيعرض لنا قائمة الملفات لنعرف أين هي
-             exit 1
-          fi
+          # التأكد من وجود مجلد البناء
+          mkdir -p build
+          
+          # عرض قائمة الملفات للتأكد من وجود appinfo.json قبل البدء
+          echo "Current directory files:"
+          ls -F
+          
+          # تنفيذ أمر بناء الحزمة
+          # استخدمنا --no-minify لضمان استقرار الروابط الخارجية في ملف التعريف
+          ares-package . -o ./build --no-minify
 
-      - name: Upload Artifact
+      - name: Upload IPK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: webos-package
+          name: webos-package-final
           path: build/*.ipk
+          if-no-files-found: error
