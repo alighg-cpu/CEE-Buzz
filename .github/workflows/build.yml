@@ -11,23 +11,32 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # تم التحديث إلى v4
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4 # تم التحديث إلى v4
+        uses: actions/setup-node@v4
         with:
-          node-version: '20' # استخدام نسخة Node حديثة ومستقرة
+          node-version: '20'
 
       - name: Install webOS CLI
         run: npm install -g @webos-tools/cli
 
-      - name: Package App
+      - name: Fix Directory and Build
         run: |
-          mkdir -p build
-          ares-package . -o ./build
+          # هذا الأمر سيتأكد من مكان ملف appinfo.json
+          FILE=appinfo.json
+          if [ -f "$FILE" ]; then
+             echo "الملف موجود، جاري البدء بالبناء..."
+             mkdir -p build
+             ares-package . -o ./build
+          else
+             echo "خطأ: ملف appinfo.json غير موجود في المجلد الرئيسي!"
+             ls -R # سيعرض لنا قائمة الملفات لنعرف أين هي
+             exit 1
+          fi
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4 # تم التحديث إلى v4 لحل مشكلة الصورة الثانية
+        uses: actions/upload-artifact@v4
         with:
           name: webos-package
           path: build/*.ipk
