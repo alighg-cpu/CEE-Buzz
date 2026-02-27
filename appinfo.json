@@ -1,13 +1,14 @@
 {
-    "id": "com.ceebuzz.app",
+    "id": "com.ceebuzz.shabakaty",
     "version": "1.0.0",
-    "vendor": "CeeBuzz",
+    "vendor": "GeminiDev",
     "type": "web",
     "main": "index.html",
-    "title": "Cee Buzz TV",
-    "icon": "icon.png",
+    "title": "CeeBuzz TV",
+    "icon": "assets/icon.png",
     "permissions": [
         "internet"
     ],
-    "resolution": "1920x1080"
+    "resolution": "1920x1080",
+    "uiRotation": "landscape"
 }
