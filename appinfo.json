@@ -4,11 +4,10 @@
     "vendor": "CeeBuzz",
     "type": "web",
     "main": "index.html",
-    "title": "CeeBuzz TV",
+    "title": "Cee Buzz TV",
     "icon": "icon.png",
-    "largeIcon": "icon.png",
-    "bgColor": "#000000",
-    "resolution": "1920x1080",
-    "permissions": ["internet"],
-    "trustLevel": "trusted"
+    "permissions": [
+        "internet"
+    ],
+    "resolution": "1920x1080"
 }
