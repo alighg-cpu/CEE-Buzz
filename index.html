@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <title>CeeBuzz TV</title>
-    <script type="text/javascript">
-        // هذا الكود يضمن التحويل للموقع الخارجي وتجاوز قيود webOS
-        window.location.replace("https://cee.buzz/home");
-    </script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="webOSTVjs-1.2.4/webOSTV.js"></script>
 </head>
-<body style="background-color: #000;">
+<body>
+    <header>
+        <img src="https://cee.buzz/assets/icons/actions/next.svg" alt="Logo" class="logo"> [cite: 161]
+        <nav id="categories"></nav>
+    </header>
+
+    <main id="content">
+        <h2 id="section-title">الأفلام المضافة حديثاً</h2>
+        <div id="video-grid" class="grid-container">
+            </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
